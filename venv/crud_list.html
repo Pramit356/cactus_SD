@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+    <meta charset="UTF-8">
+    <title>Programming list</title>
+    <script> src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"</script>
+    <script type="text/JavaScript">
+
+    function addNewLanguage() {
+        labelForInput = document.createElement('div');
+	    txtNewInputBox = document.createElement('div');
+	    txtSubmitButton = document.createElement('div');
+	    labelForInput.innerHTML = "<label type='text' id='newInputLabel'>Please enter a programming language:</label>";
+	    txtNewInputBox.innerHTML = "<input type='text' id='newInputBox'>";
+	    txtSubmitButton.innerHTML = "<input type='button' id='submit' value='Submit' onclick='toList()'>";
+	    document.getElementById("addToList").appendChild(labelForInput);
+	    document.getElementById("addToList").appendChild(txtNewInputBox);
+	    document.getElementById("addToList").appendChild(txtSubmitButton);
+    }
+
+    function toList(){
+        var val = document.getElementById('newInputBox')
+        if (val.value.length > 0)
+        {
+            var anotherItem = document.createElement('li');
+            p = document.createElement("p");
+            p.innerHTML = "<li id="+val.value+">"+val.value+"</li>";
+            document.getElementById("mainList").appendChild(p);
+        }
+        var element1 = document.getElementById('newInputBox');
+        element1.parentNode.removeChild(element1);
+        var element2 = document.getElementById('newInputLabel');
+        element2.parentNode.removeChild(element2);
+        var element3 = document.getElementById('submit');
+        element3.parentNode.removeChild(element3);
+    }
+
+    function deleteLanguage(){
+        labelForInput1 = document.createElement('div');
+	    txtNewInputBox1 = document.createElement('div');
+	    txtSubmitButton1 = document.createElement('div');
+	    labelForInput1.innerHTML = "<label type='text' id='newInputLabel1'>Please enter a language to delete:</label>";
+	    txtNewInputBox1.innerHTML = "<input type='text' id='newInputBox1'>";
+	    txtSubmitButton1.innerHTML = "<input type='button' id='submit1' value='Submit1' onclick='remover()'>";
+	    document.getElementById("addToList").appendChild(labelForInput1);
+	    document.getElementById("addToList").appendChild(txtNewInputBox1);
+	    document.getElementById("addToList").appendChild(txtSubmitButton1);
+    }
+
+    function remover(){
+        var val = document.getElementById('newInputBox1')
+        if (val.value.length > 0)
+        {
+            var element = document.getElementById(val.value);
+            element.parentNode.removeChild(element);
+        }
+        var element1 = document.getElementById('newInputBox1');
+        element1.parentNode.removeChild(element1);
+        var element2 = document.getElementById('newInputLabel1');
+        element2.parentNode.removeChild(element2);
+        var element3 = document.getElementById('submit1');
+        element3.parentNode.removeChild(element3);
+    }
+
+
+    function removeALL(){
+        var mainList = document.getElementById('mainList');
+        mainList.innerHTML = '';
+    }
+
+    </script>
+</head>
+<body>
+    <H1>List of programming languages</H1>
+    <div id="main">
+        <input type="button" id="btAdd" value="Add a language" class="bt" onclick="addNewLanguage();"/>
+        <input type="button" id="btRemove" value="Remove a language" class="bt" onclick="deleteLanguage();"/>
+        <input type="button" id="btRemoveAll" value="Remove All" class="bt" onclick="removeALL();" /><br />
+    </div>
+    <div id = "addToList"></div>
+    <ul id = "mainList"></ul>
+
+
+    <div id="textboxDiv"></div>
+</body>
+</html>
